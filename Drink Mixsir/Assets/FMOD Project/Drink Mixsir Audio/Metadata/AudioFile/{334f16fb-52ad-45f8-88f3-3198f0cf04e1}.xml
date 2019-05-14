@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{334f16fb-52ad-45f8-88f3-3198f0cf04e1}">
+        <property name="assetPath">
+            <value>Bar/SFX-Bar-CompleteDrink.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>3.4110204081632651</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{6c62fbea-20ac-4081-89ae-1f53142ad903}</destination>
+        </relationship>
+    </object>
+</objects>

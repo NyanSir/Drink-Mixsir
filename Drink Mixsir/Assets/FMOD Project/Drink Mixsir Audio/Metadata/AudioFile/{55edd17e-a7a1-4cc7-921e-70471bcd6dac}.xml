@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{55edd17e-a7a1-4cc7-921e-70471bcd6dac}">
+        <property name="assetPath">
+            <value>Bar/SFX-Bar-Bag-AddLiquid.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>48</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>1.3441458333333334</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{6c62fbea-20ac-4081-89ae-1f53142ad903}</destination>
+        </relationship>
+    </object>
+</objects>

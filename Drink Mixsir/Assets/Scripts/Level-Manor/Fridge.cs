@@ -28,6 +28,7 @@ public class Fridge : AbstractItem {
             isOpen = true;
 
             GetComponent<BoxCollider2D>().enabled = false;
+            GetComponent<FMODUnity.StudioEventEmitter>().Play();
         }        
     }
 

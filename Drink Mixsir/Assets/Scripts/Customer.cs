@@ -27,6 +27,8 @@ public class Customer : MonoBehaviour {
 
     private Drink drink;
 
+    protected FMODUnity.StudioEventEmitter emitter;
+
     protected virtual void Awake() {
         anim = GetComponent<AnimationManager>();
         col = GetComponent<Collider>();
@@ -34,6 +36,8 @@ public class Customer : MonoBehaviour {
         drink = GameObject.Find("Drink").GetComponent<Drink>();
 
         anim.SetAnimationState(AnimationState.Idle);
+
+        emitter = GetComponent<FMODUnity.StudioEventEmitter>();
     }
 
     // Use this for initialization
@@ -56,7 +60,15 @@ public class Customer : MonoBehaviour {
 
         if (!isSatisfied) {
             hint.GetComponent<AnimationManager>().SetAnimationState(AnimationState.Touched);
+
+            SetAudioState(0.0f);
+            PlayAudio();
         }
+        else {
+            SetAudioState(2.0f);
+            PlayAudio();
+        }
+        
     }
 
     public bool ServeWith(Recipe mix) {
@@ -72,6 +84,9 @@ public class Customer : MonoBehaviour {
             Debug.Log(gameObject.name + " DON'T LIKE it!");
 
             anim.SetAnimationState(AnimationState.Dislike);
+            SetAudioState(1.0f);
+            Debug.Log(emitter.Params[0].Value);
+            PlayAudio();
 
             return false;
         }
@@ -87,6 +102,9 @@ public class Customer : MonoBehaviour {
             Satisfy();
             isSatisfied = true;
             anim.SetAnimationState(AnimationState.Satisfied);
+            SetAudioState(2.0f);
+            PlayAudio();
+
             col.enabled = false;
             hint.SetActive(false);
             //DisplayDrink();
@@ -94,6 +112,9 @@ public class Customer : MonoBehaviour {
         }
 
         anim.SetAnimationState(AnimationState.Dislike);
+        SetAudioState(1.0f);
+        PlayAudio();
+
         Debug.Log(gameObject.name + " NEED MORE!");
         return false;
         
@@ -156,11 +177,24 @@ public class Customer : MonoBehaviour {
         drink.DisplayDrink(drinkImage, drinkName, isOfficial);
     }
 
-//     private void OnMouseDown() {
-//         if (product.isComplete) {
-//             ServeWith(product.mix);
-//             product.EmptyProduct();
-//         }
-//     }
+    protected void PlayAudio() {
+        if (emitter != null) {
+            emitter.Play();
+        }
+    }
+
+    protected void SetAudioState(float state) {
+        if (emitter != null) {
+            emitter.Params[0].Value = state;
+            //emitter.SetParameter("State", state);
+        }
+    }
+
+    //     private void OnMouseDown() {
+    //         if (product.isComplete) {
+    //             ServeWith(product.mix);
+    //             product.EmptyProduct();
+    //         }
+    //     }
 
 }

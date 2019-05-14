@@ -11,9 +11,15 @@ public class Container : MonoBehaviour {
 
     [SerializeField]
     protected int countInContainer = 0;
-    
-	// Use this for initialization
-	protected virtual void Start () {
+
+    private FMODUnity.StudioEventEmitter emitter;
+
+    protected virtual void Awake() {
+        emitter = GetComponent<FMODUnity.StudioEventEmitter>();
+    }
+
+    // Use this for initialization
+    protected virtual void Start () {
         
         int index = 0;
         foreach (GameObject inner in inners) {
@@ -68,6 +74,9 @@ public class Container : MonoBehaviour {
         inners[index].SetActive(true);
         inners[index].transform.position = new Vector3(transform.position.x + Random.Range(-10, 10), transform.position.y + 10 , 0);
         inners[index].GetComponent<Image>().sprite = c.GetSprite();
+
+        SetAudioState(0.0f);
+        PlayAudio();
     }
 
     public virtual void Remove(Inner i) {
@@ -78,6 +87,12 @@ public class Container : MonoBehaviour {
                 inners[index].SetActive(false);
                 innerCollects[index] = null;
                 countInContainer--;
+
+                if (!isMakingEmpty) {
+                    SetAudioState(1.0f);
+                    PlayAudio();
+                }
+
                 break;
             }
             index++;
@@ -85,11 +100,28 @@ public class Container : MonoBehaviour {
 
     }
 
+    private bool isMakingEmpty = false;
     public virtual void EmptyContainer() {
+        isMakingEmpty = true;
         for (int i = 0; i < innerCollects.Length; i++) {
             Remove(inners[i].GetComponent<Inner>());
         }
         countInContainer = 0;
+        isMakingEmpty = false;
     }
+
+    private void PlayAudio() {
+        if (emitter != null) {
+            emitter.Play();
+        }
+    }
+
+    private void SetAudioState(float state) {
+        if (emitter != null) {
+            emitter.Params[0].Value = state;
+            //emitter.SetParameter("State", state);
+        }
+    }
+
 
 }

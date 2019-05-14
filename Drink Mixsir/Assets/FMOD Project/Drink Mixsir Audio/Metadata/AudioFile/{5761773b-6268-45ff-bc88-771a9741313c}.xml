@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{5761773b-6268-45ff-bc88-771a9741313c}">
+        <property name="assetPath">
+            <value>Interactables/SFX-Interactable-Fridge-Open.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>48</value>
+        </property>
+        <property name="channelCount">
+            <value>1</value>
+        </property>
+        <property name="length">
+            <value>0.37595833333333334</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{6c62fbea-20ac-4081-89ae-1f53142ad903}</destination>
+        </relationship>
+    </object>
+</objects>

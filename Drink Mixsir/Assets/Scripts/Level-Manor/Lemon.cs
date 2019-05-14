@@ -24,17 +24,27 @@ public class Lemon : Ingredient {
 
         if (!canCollect) {
             if (index < sprites.Length - 2) {
+                SetAudioState(index);
+                PlayAudio();
+
                 index++;
                 spr.sprite = sprites[index];
+
             } 
             
             if (index >= sprites.Length - 2) {
+
                 canCollect = true;
             }
         }
         else {
             AddToBag();
             spr.sprite = sprites[index + 1];
+
+            SetAudioState(2.0f);
+            PlayAudio();
+
+            GetComponent<BoxCollider2D>().enabled = false;
         }
           
     }

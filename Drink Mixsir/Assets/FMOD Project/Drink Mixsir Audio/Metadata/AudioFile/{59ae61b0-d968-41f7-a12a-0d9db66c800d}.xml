@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{59ae61b0-d968-41f7-a12a-0d9db66c800d}">
+        <property name="assetPath">
+            <value>Customers/SFX-Customer-Nestling-Satisfied.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>1</value>
+        </property>
+        <property name="length">
+            <value>1.3762585034013606</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{6c62fbea-20ac-4081-89ae-1f53142ad903}</destination>
+        </relationship>
+    </object>
+</objects>

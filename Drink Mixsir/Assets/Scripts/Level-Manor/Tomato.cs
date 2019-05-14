@@ -22,6 +22,7 @@ public class Tomato : Ingredient {
         if (isRelease) {
             AddToBag();
             GetComponent<AnimationManager>().SetAnimationState(AnimationState.Touched);
+            PlayAudio();
         }
         else {
             cat.GetComponent<Cat>().Stare();

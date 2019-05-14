@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{080d7c63-e1ad-4036-9abe-df9c1e7ac2ec}">
+        <property name="assetPath">
+            <value>Customers/SFX-Customer-Cow-Clicked.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>16</value>
+        </property>
+        <property name="channelCount">
+            <value>1</value>
+        </property>
+        <property name="length">
+            <value>1.2245625</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{6c62fbea-20ac-4081-89ae-1f53142ad903}</destination>
+        </relationship>
+    </object>
+</objects>

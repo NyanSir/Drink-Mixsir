@@ -52,6 +52,7 @@ public class Pecker : MonoBehaviour {
             //isMove = true;
 
             GetComponent<AnimationManager>().SetAnimationState(AnimationState.Touched);
+            GetComponent<FMODUnity.StudioEventEmitter>().Play();
         }
         
     }

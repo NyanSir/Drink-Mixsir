@@ -12,11 +12,15 @@ public class Drink : MonoBehaviour {
 
     private int state = 0;
     private Animator animator;
-    
+
+    private FMODUnity.StudioEventEmitter emitter;
+
     private void Awake() {
         animator = GetComponent<Animator>();
         drinkImage = transform.Find("Image").GetComponent<Image>();
         drinkName = transform.Find("Name").GetComponent<Image>();
+
+        emitter = GetComponent<FMODUnity.StudioEventEmitter>();
     }
     
 	// Use this for initialization
@@ -54,11 +58,28 @@ public class Drink : MonoBehaviour {
         gameObject.SetActive(true);
 
         state = 0;
+
+        PlayAudio();
     }
 
     public void SetState(int i) {
         state = i;
     }
+
+    private void PlayAudio() {
+        if (emitter != null) {
+            emitter.Play();
+        }
+    }
+
+    private void SetAudioState(float state) {
+        if (emitter != null)
+        {
+            emitter.Params[0].Value = state;
+            //emitter.SetParameter("State", state);
+        }
+    }
+
 
     public void OnDestroy() {
         gameObject.SetActive(false);

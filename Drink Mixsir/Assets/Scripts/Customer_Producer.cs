@@ -18,8 +18,12 @@ public class Customer_Producer : Customer {
     }
 
     public void Produce() {
-        if (output != null)
+        if (output != null) {
             output.SetActive(true);
+
+            SetAudioState(2.5f);
+            PlayAudio();
+        }
     }
     
 }

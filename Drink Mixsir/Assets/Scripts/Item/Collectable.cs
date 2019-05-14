@@ -18,16 +18,25 @@ public class Collectable : AbstractItem {
 
     public bool deactiveAfterCollect;
 
+    protected FMODUnity.StudioEventEmitter emitter;
+
     //public delegate void BagDelegate();
     //public BagDelegate bag;
+
+    protected override void Awake() {
+        base.Awake();
+
+        emitter = GetComponent<FMODUnity.StudioEventEmitter>();
+    }
 
     protected override void OnDown() {
         AddToBag();
 
         //if (deactiveAfterCollect)
         //    gameObject.SetActive(false);
-        
+
         GetComponent<AnimationManager>().SetAnimationState(AnimationState.Touched);
+        PlayAudio();
 
         base.OnDown();
     }
@@ -56,6 +65,19 @@ public class Collectable : AbstractItem {
 
     public void DeactiveCollider() {
         GetComponent<BoxCollider2D>().enabled = false;
+    }
+
+    protected void PlayAudio() {
+        if (emitter != null) {
+            emitter.Play();
+        }
+    }
+
+    protected void SetAudioState(float state) {
+        if (emitter != null) {
+            emitter.Params[0].Value = state;
+            //emitter.SetParameter("State", state);
+        }
     }
 
 }
